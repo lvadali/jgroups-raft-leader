@@ -112,7 +112,7 @@ public class Candidate extends State {
 		electionInProgress = true;
 		msgUtil.sendVoteReqMsg();
 		electionTimer = new Timer(true);
-		int electionTimeOut = getElcetionTimeout();
+		int electionTimeOut = getElectionTimeout();
 		electionTimer.schedule(new TimerTask() {
 
 			@Override
@@ -127,7 +127,7 @@ public class Candidate extends State {
 		}, electionTimeOut*1000);
 	}
 
-	private int getElcetionTimeout() {
+	private int getElectionTimeout() {
 		Random rand = new Random();
 		int temp = rand.nextInt(raftProperties.getInstance().getMaxelectionlimit() - raftProperties.getInstance().getMinelectionTimeOut() + 1);		
 		return temp+raftProperties.getInstance().getMinelectionTimeOut();
